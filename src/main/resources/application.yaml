@@ -5,6 +5,9 @@ spring:
   application:
     name: auth
 
+  cache:
+    type: redis
+
 
 store:
   jwt:

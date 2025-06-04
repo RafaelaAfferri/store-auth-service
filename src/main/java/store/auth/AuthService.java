@@ -3,6 +3,7 @@ package store.auth;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,7 @@ public class AuthService {
         return generateToken(accountOut.id());
     }
 
+    @Cacheable("loginAuth")
     public String login(String email, String password) {
 
         ResponseEntity<AccountOut> response = accountController.findByEmailAndPassword(
